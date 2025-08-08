@@ -8,8 +8,8 @@ class LoginPage(BasePage):
     USERNAME_FIELD = (By.ID, "user-name")
     PASSWORD_FIELD = (By.ID, "password")
     LOGIN_BUTTON = (By.ID, "login-button")
-    ERROR_MESSAGE = (By.CSS_SELECTOR, "[data-test='error]")
-    ERROR_BUTTON = (By.CSS_SELECTOR, "error-button")
+    ERROR_MESSAGE = (By.CSS_SELECTOR, "[data-test='error']")
+    ERROR_BUTTON = (By.CLASS_NAME, "error-button")
     LOGIN_LOGO = (By.CLASS_NAME, "login_logo")
 
     def __init__(self, driver):
@@ -58,6 +58,10 @@ class LoginPage(BasePage):
             return self.find_element(self.ERROR_MESSAGE).text
         return None
     
+    def is_error_displayed(self):
+        # Check if the error message is displayed
+        return self.is_element_present(self.ERROR_MESSAGE)
+        
     def is_login_page_loaded(self):
         # Check if the login page is loaded looking for the login logo
         return self.is_element_present(self.LOGIN_LOGO)
