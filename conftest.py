@@ -8,14 +8,14 @@ from dotenv import load_dotenv
 
 load = load_dotenv()
 
-@pytest.fixture(scope = "session")
+@pytest.fixture(scope="session")
 def driver():
     options = Options()
     options.add_argument("--disable-notifications")
     options.add_argument("--disable-popup-blocking")
     #options.add_argument("--headless")
 
-    service = Service(ChromeDriverManager().install)
+    service = Service(ChromeDriverManager().install())
     driver = webdriver.Chrome(service=service, options=options)
     driver.maximize_window
     driver.implicitly_wait(int(os.getenv("IMPLICIT_WAIT", 10)))

@@ -34,6 +34,12 @@ class LoginPage(BasePage):
         password_field.send_keys(password)
         return self
     
+    def click_login(self):
+        # Click on the login button
+        login_button = self.find_clickeable_element(self.LOGIN_BUTTON)
+        login_button.click()
+        return self
+    
     def login(self, username, password):
         # Login with the provided credentials
         self.enter_username(username)
