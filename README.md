@@ -114,7 +114,7 @@ Logs: Output detallado en consola con -v flag
 
 
 ### Casos de Prueba Incluidos
-Login Tests (test_login.py)
+#### Login Tests (test_login.py)
 
 ✅ Login exitoso con usuario válido
 
@@ -126,7 +126,7 @@ Login Tests (test_login.py)
 
 ✅ Verificación de elementos de página
 
-Products Tests (test_products.py)
+#### Products Tests (test_products.py)
 
 ✅ Carga correcta de página de productos
 
@@ -140,7 +140,7 @@ Products Tests (test_products.py)
 
 ✅ Tests parametrizados para diferentes productos
 
-Cart Flow Tests (test_cart_flow.py)
+#### Cart Flow Tests (test_cart_flow.py)
 
 ✅ Visualización de productos en carrito
 
