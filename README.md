@@ -1,4 +1,4 @@
-#  E-commerce Testing Suite
+###  E-commerce Testing Suite
 
 Automated Testing Framework para aplicación e-commerce usando Python + Selenium + Pytest
 
@@ -16,6 +16,8 @@ Automated Testing Framework para aplicación e-commerce usando Python + Selenium
 * Pytest para framework de testing
 * WebDriver Manager para gestion automatica de drivers
 * Faker para generacion de datos de prueba
+
+
 
 ## Estructura del proyecto
 E-COMMERCE_TESTING_SUITE/
@@ -69,12 +71,12 @@ EXPLICIT_WAIT=20
 
 
 
-### Ejecutar Tests
+## Ejecutar Tests
 
-# Todos los Tests
+### Todos los Tests
 pytest -v
 
-# Tests especificos por marcador
+### Tests especificos por marcador
 - Solo tests de smoke
 pytest -m smoke -v
 
@@ -84,7 +86,7 @@ pytest -m regression -v
 - Solo tests de UI
 pytest -m ui -v
 
-# Tests específicos por archivo
+### Tests específicos por archivo
 - Solo tests de login
 pytest tests/ui/test_login.py -v
 
@@ -95,10 +97,10 @@ pytest tests/ui/test_products.py -v
 pytest tests/ui/test_login.py::TestLogin::test_successful_login_standard_user -v
 Con reporte HTML
 
-# Con reporte HTML
+### Con reporte HTML
 pytest -v --html=reports/report.html --self-contained-html
 
-# Tests en paralelo (instalar pytest-xdist)
+### Tests en paralelo (instalar pytest-xdist)
 pip install pytest-xdist
 pytest -v -n 2  # Ejecutar con 2 procesos paralelos
 
@@ -115,9 +117,13 @@ Logs: Output detallado en consola con -v flag
 Login Tests (test_login.py)
 
 ✅ Login exitoso con usuario válido
+
 ✅ Login con credenciales inválidas
+
 ✅ Login con usuario bloqueado
+
 ✅ Validación de campos requeridos
+
 ✅ Verificación de elementos de página
 
 Products Tests (test_products.py)
@@ -134,6 +140,20 @@ Cart Flow Tests (test_cart_flow.py)
 ✅ Visualización de productos en carrito
 ✅ Remover productos del carrito
 ✅ Continuar comprando desde carrito
+
+
+
+
+#### Próximos Pasos
+
+ API Testing con requests
+ Database validations
+ CI/CD con GitHub Actions
+ Docker containerización
+ Allure reporting
+ Performance testing básico
+
+
 
 
 ## Contacto
