@@ -21,26 +21,26 @@ Automated Testing Framework para aplicación e-commerce usando Python + Selenium
 
 ## Estructura del proyecto
 
-E-COMMERCE_TESTING_SUITE/
-├── pages/                 # Page Object Model
-│   ├── base_page.py       # Clase base para páginas
-│   ├── login_page.py      # Página de login  
-│   ├── products_page.py   # Página de productos
-│   └── cart_page.py       # Página del carrito
-├── tests/                 # Tests organizados
-│   ├── ui/                # UI Tests
-│   │   ├── test_login.py
-│   │   ├── test_products.py
-│   │   └── test_cart_flow.py
-│   ├── api/              # API Tests (próximamente)
-│   └── integration/      # Integration Tests
-├── utils/                # Utilidades
-│   ├── config.py         # Configuración
-│   └── helpers.py        # Funciones auxiliares
-├── data/                 # Datos de prueba
-├── reports/              # Reportes generados
-├── screenshots/          # Screenshots de fallos
-└── conftest.py           # Configuración pytest
+    E-COMMERCE_TESTING_SUITE/
+    ├── pages/                 # Page Object Model
+    │   ├── base_page.py       # Clase base para páginas
+    │   ├── login_page.py      # Página de login  
+    │   ├── products_page.py   # Página de productos
+    │   └── cart_page.py       # Página del carrito
+    ├── tests/                 # Tests organizados
+    │   ├── ui/                # UI Tests
+    │   │   ├── test_login.py
+    │   │   ├── test_products.py
+    │   │   └── test_cart_flow.py
+    │   ├── api/              # API Tests (próximamente)
+    │   └── integration/      # Integration Tests
+    ├── utils/                # Utilidades
+    │   ├── config.py         # Configuración
+    │   └── helpers.py        # Funciones auxiliares
+    ├── data/                 # Datos de prueba
+    ├── reports/              # Reportes generados
+    ├── screenshots/          # Screenshots de fallos
+    └── conftest.py           # Configuración pytest
 
 
 
@@ -166,7 +166,7 @@ Cart Flow Tests (test_cart_flow.py)
 
 
 ## Contacto
-Autor: Laureano Gabriel Carranza Guiñazú
-Email: laureano.piano.2008@gmail.com
-LinkedIn: [https://www.linkedin.com/in/laureano-carranza]
-GitHub: [Onaeru]
+* Autor: Laureano Gabriel Carranza Guiñazú
+* Email: laureano.piano.2008@gmail.com
+* LinkedIn: [https://www.linkedin.com/in/laureano-carranza]
+* GitHub: [Onaeru]
