@@ -78,23 +78,23 @@ Automated Testing Framework para aplicación e-commerce usando Python + Selenium
     pytest -v
 
 ### Tests especificos por marcador
- Solo tests de smoke
+Solo tests de smoke
     pytest -m smoke -v
 
- Solo tests de regresión
+Solo tests de regresión
     pytest -m regression -v
 
- Solo tests de UI
+Solo tests de UI
     pytest -m ui -v
 
 ### Tests específicos por archivo
- Solo tests de login
+Solo tests de login
     pytest tests/ui/test_login.py -v
 
- Solo tests de productos
+Solo tests de productos
     pytest tests/ui/test_products.py -v
 
- Test específico
+Test específico
     pytest tests/ui/test_login.py::TestLogin::test_successful_login_standard_user -v
 
 ### Con reporte HTML
