@@ -75,7 +75,7 @@ Automated Testing Framework para aplicación e-commerce usando Python + Selenium
 ## Ejecutar Tests
 
 ### Todos los Tests
-pytest -v
+- pytest -v
 
 ### Tests especificos por marcador
 - Solo tests de smoke
