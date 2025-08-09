@@ -75,35 +75,34 @@ Automated Testing Framework para aplicación e-commerce usando Python + Selenium
 ## Ejecutar Tests
 
 ### Todos los Tests
-- pytest -v
+    pytest -v
 
 ### Tests especificos por marcador
-- Solo tests de smoke
-pytest -m smoke -v
+ Solo tests de smoke
+    pytest -m smoke -v
 
-- Solo tests de regresión
-pytest -m regression -v
+ Solo tests de regresión
+    pytest -m regression -v
 
-- Solo tests de UI
-pytest -m ui -v
+ Solo tests de UI
+    pytest -m ui -v
 
 ### Tests específicos por archivo
-- Solo tests de login
-pytest tests/ui/test_login.py -v
+ Solo tests de login
+    pytest tests/ui/test_login.py -v
 
-- Solo tests de productos
-pytest tests/ui/test_products.py -v
+ Solo tests de productos
+    pytest tests/ui/test_products.py -v
 
-- Test específico
-pytest tests/ui/test_login.py::TestLogin::test_successful_login_standard_user -v
-Con reporte HTML
+ Test específico
+    pytest tests/ui/test_login.py::TestLogin::test_successful_login_standard_user -v
 
 ### Con reporte HTML
-pytest -v --html=reports/report.html --self-contained-html
+    pytest -v --html=reports/report.html --self-contained-html
 
 ### Tests en paralelo (instalar pytest-xdist)
-pip install pytest-xdist
-pytest -v -n 2  # Ejecutar con 2 procesos paralelos
+    pip install pytest-xdist
+    pytest -v -n 2  # Ejecutar con 2 procesos paralelos
 
 
 
