@@ -13,6 +13,8 @@ def driver():
     options = Options()
     options.add_argument("--disable-notifications")
     options.add_argument("--disable-popup-blocking")
+    options.add_argument("--disable-features=PasswordLeakDetection") # Disable password leak detection
+
     options.add_experimental_option("prefs", {
         "credentials_enable_service": False,
         "profile.password_manager_enabled": False,

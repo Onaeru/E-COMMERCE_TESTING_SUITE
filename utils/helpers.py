@@ -11,9 +11,15 @@ class TestHelpers:
         return {
             "username": fake.user_name(),
             "email": fake.email(),
-            "first_name": fake.first_name(),
+            "first_name": fake.first_name(),     
             "last_name": fake.last_name(),
-            "password": fake.password(length=12)
+            "password": fake.password(
+                length=12,
+                special_chars=True,
+                digits=True,
+                upper_case=True,
+                lower_case=True
+            )
         }
     
     @staticmethod

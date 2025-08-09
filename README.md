@@ -27,11 +27,13 @@ Automated Testing Framework para aplicación e-commerce usando Python + Selenium
     │   ├── login_page.py      # Página de login  
     │   ├── products_page.py   # Página de productos
     │   └── cart_page.py       # Página del carrito
+    │   └── checkout_page.py   # Página del pago (checkout)
     ├── tests/                 # Tests organizados
     │   ├── ui/                # UI Tests
     │   │   ├── test_login.py
     │   │   ├── test_products.py
     │   │   └── test_cart_flow.py
+    │   │   └── test_checkout.py
     │   ├── api/              # API Tests (próximamente)
     │   └── integration/      # Integration Tests
     ├── utils/                # Utilidades
@@ -148,6 +150,19 @@ Logs: Output detallado en consola con -v flag
 
 ✅ Continuar comprando desde carrito
 
+#### Checkout Tests (test_checkout.py)
+
+✅ Verificacion de pago exitoso
+
+✅ Tratar de pagar faltando el nombre
+
+✅ Tratar de pagar faltando el apellido
+
+✅ Tratar de pagar faltando el codigo postal
+
+✅ Cancelar checkout
+
+✅ Volver a la pagina de productos despues de un pago exitoso
 
 
 
