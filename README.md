@@ -47,28 +47,28 @@ Automated Testing Framework para aplicación e-commerce usando Python + Selenium
 
 ## Setup e Instalacion 
 
-1. Clonar Repositorio
-git clone <tu-repo-url>
-cd ecommerce-testing-suite
+    1. Clonar Repositorio
+    git clone <tu-repo-url>
+    cd ecommerce-testing-suite
 
-2. Crear entorno virtual
-python -m venv venv
+    2. Crear entorno virtual
+    python -m venv venv
 
-#Windows
-venv\Scripts\activate
+    #Windows
+    venv\Scripts\activate
 
-#Linux/Mac
-source venv/bin/activate
+    #Linux/Mac
+    source venv/bin/activate
 
-3. Instalar Dependencias
-pip install -r requirements.txt
+    3. Instalar Dependencias
+    pip install -r requirements.txt
 
-4. Configurar Variables de Entorno
-Crear archivo '.env' en el directorio raiz
-BASE_URL=https://www.saucedemo.com
-BROWSER=chrome
-IMPLICIT_WAIT=10
-EXPLICIT_WAIT=20
+    4. Configurar Variables de Entorno
+    Crear archivo '.env' en el directorio raiz
+    BASE_URL=https://www.saucedemo.com
+    BROWSER=chrome
+    IMPLICIT_WAIT=10
+    EXPLICIT_WAIT=20
 
 
 
