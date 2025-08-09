@@ -3,12 +3,12 @@
 Automated Testing Framework para aplicación e-commerce usando Python + Selenium + Pytest
 
 ## Caracteristicas: 
-[x] UI Testing con Page Object Model (POM)
-[x] Configuracion flexible con variables de entorno
-[x] Screenshots automaticos en caso de fallos
-[x] Reportes HTML detallados
-[x] Tests parametrizados y organizados por marcadores
-[x] Setup/Teardown automatico
+    [x] UI Testing con Page Object Model (POM)
+    [x] Configuracion flexible con variables de entorno
+    [x] Screenshots automaticos en caso de fallos
+    [x] Reportes HTML detallados
+    [x] Tests parametrizados y organizados por marcadores
+    [x] Setup/Teardown automatico
 
 ## Stack Tecnologico
 * Python 4.1+
