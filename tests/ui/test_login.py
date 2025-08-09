@@ -13,6 +13,7 @@ class TestLogin:
         self.login_page = LoginPage(driver)
         self.products_page = ProductsPage(driver)
 
+    @pytest.mark.smoke
     def test_login_page_elements_present(self):
         # Verify that the login page elements are present
         self.login_page.open()

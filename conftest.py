@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 
 load = load_dotenv()
 
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="function")
 def driver():
     options = Options()
     options.add_argument("--disable-notifications")
