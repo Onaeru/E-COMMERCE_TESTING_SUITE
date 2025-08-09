@@ -37,7 +37,7 @@ class CartPage(BasePage):
     
     def remove_item(self, item_index=0):
         # Remove an item from the cart
-        remove_buttons = self.find_clickeable_element(self.REMOVE_BUTTONS[item_index])
-        if remove_buttons and item_index < len(self.REMOVE_BUTTONS):
+        remove_buttons = self.driver.find_elements(*self.REMOVE_BUTTONS)
+        if remove_buttons and item_index < len(remove_buttons):
             remove_buttons[item_index].click()
         return self
