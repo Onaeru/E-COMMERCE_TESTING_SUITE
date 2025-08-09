@@ -129,17 +129,25 @@ Login Tests (test_login.py)
 Products Tests (test_products.py)
 
 ✅ Carga correcta de página de productos
+
 ✅ Agregar producto individual al carrito
+
 ✅ Agregar múltiples productos
+
 ✅ Navegación al carrito
+
 ✅ Funcionalidad de logout
+
 ✅ Tests parametrizados para diferentes productos
 
 Cart Flow Tests (test_cart_flow.py)
 
 ✅ Visualización de productos en carrito
+
 ✅ Remover productos del carrito
+
 ✅ Continuar comprando desde carrito
+
 
 
 
