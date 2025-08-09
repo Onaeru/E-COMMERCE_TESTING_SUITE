@@ -20,6 +20,7 @@ Automated Testing Framework para aplicación e-commerce usando Python + Selenium
 
 
 ## Estructura del proyecto
+
 E-COMMERCE_TESTING_SUITE/
 ├── pages/                 # Page Object Model
 │   ├── base_page.py       # Clase base para páginas
@@ -154,12 +155,12 @@ Cart Flow Tests (test_cart_flow.py)
 
 #### Próximos Pasos
 
- API Testing con requests
- Database validations
- CI/CD con GitHub Actions
- Docker containerización
- Allure reporting
- Performance testing básico
+ - API Testing con requests
+ - Database validations
+ - CI/CD con GitHub Actions
+ - Docker containerización
+ - Allure reporting
+ - Performance testing básico
 
 
 
