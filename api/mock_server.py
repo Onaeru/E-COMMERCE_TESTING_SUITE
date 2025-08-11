@@ -12,7 +12,7 @@ def init_db():
 
     # Create the users table
     cursor.execute('''
-        CREATE TABLE IF NOT EXISTS users(
+        CREATE TABLE IF NOT EXISTS users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             username TEXT UNIQUE NOT NULL,
             email TEXT UNIQUE NOT NULL,
@@ -24,7 +24,7 @@ def init_db():
 
     # Create the products table
     cursor.execute('''
-        CREATE TABLE IF NOT EXISTS products(
+        CREATE TABLE IF NOT EXISTS products (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             name TEXT NOT NULL,
             price REAL NOT NULL,
@@ -35,25 +35,26 @@ def init_db():
 
     # Create the orders table
     cursor.execute('''
-        CREATE TABLE IF NOT EXISTS orders(
+        CREATE TABLE IF NOT EXISTS orders (
             id TEXT PRIMARY KEY,
             user_id INTEGER,
             total_amount REAL,
             status TEXT DEFAULT 'pending',
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            FOREIGN KEY(user_id) REFERENCES users(id)
+            FOREIGN KEY (user_id) REFERENCES users (id)
         )
     ''')
 
     # Create the order_items table
     cursor.execute('''
-        CREATE TABLE IF NOT EXISTS order_items(
+        CREATE TABLE IF NOT EXISTS order_items (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             order_id TEXT,
             product_id INTEGER,
             quantity INTEGER,
-            FOREIGN KEY(order_id) REFERENCES orders(id),
-            FOREIGN KEY(product_id) REFERENCES products(id)
+            price REAL,
+            FOREIGN KEY (order_id) REFERENCES orders (id),
+            FOREIGN KEY (product_id) REFERENCES products (id)
         )
     ''')
 
@@ -79,7 +80,7 @@ def get_users():
     cursor.execute('SELECT * FROM users')
     users = cursor.fetchall()
     conn.close()
-
+    
     return jsonify({
         'users': [
             {
@@ -95,13 +96,13 @@ def get_users():
 
 @app.route('/api/users', methods=['POST'])
 def create_user():
-    data  = request.get_json()
-
+    data = request.get_json()
+    
     required_fields = ['username', 'email', 'first_name', 'last_name']
     for field in required_fields:
         if field not in data:
             return jsonify({'error': f'{field} is required'}), 400
-        
+    
     try:
         conn = sqlite3.connect('ecommerce_test.db')
         cursor = conn.cursor()
@@ -109,7 +110,7 @@ def create_user():
             INSERT INTO users (username, email, first_name, last_name)
             VALUES (?, ?, ?, ?)
         ''', (data['username'], data['email'], data['first_name'], data['last_name']))
-
+        
         user_id = cursor.lastrowid
         conn.commit()
         conn.close()
@@ -190,7 +191,7 @@ def update_product_stock(product_id):
 @app.route('/api/orders', methods=['POST'])
 def create_order():
     data = request.get_json()
-
+    
     required_fields = ['user_id', 'items']
     for field in required_fields:
         if field not in data:
@@ -198,52 +199,52 @@ def create_order():
     
     order_id = str(uuid.uuid4())
     total_amount = 0
-
+    
     conn = sqlite3.connect('ecommerce_test.db')
     cursor = conn.cursor()
-
+    
     try:
         # Calculate total and validate products
         for item in data['items']:
             product_id = item['product_id']
             quantity = item['quantity']
-
+            
             cursor.execute('SELECT price, stock FROM products WHERE id = ?', (product_id,))
             product = cursor.fetchone()
-
+            
             if not product:
-                return jsonify({'error': f'Product with id {product_id} not found'}), 404
+                return jsonify({'error': f'Product {product_id} not found'}), 404
             
             price, stock = product
             if stock < quantity:
-                return jsonify({'error': f'Not enough stock for product with id {product_id}'}), 400
+                return jsonify({'error': f'Not enough stock for product {product_id}'}), 400
             
             total_amount += price * quantity
 
-        # Create order
+        # Insert order into the database
         cursor.execute('''
             INSERT INTO orders (id, user_id, total_amount, status)
             VALUES (?, ?, ?, 'completed')
         ''', (order_id, data['user_id'], total_amount))
-
+        
         # Create order items and update stock
         for item in data['items']:
             product_id = item['product_id']
             quantity = item['quantity']
-
+            
             cursor.execute('SELECT price FROM products WHERE id = ?', (product_id,))
             price = cursor.fetchone()[0]
-
+            
             cursor.execute('''
                 INSERT INTO order_items (order_id, product_id, quantity, price)
                 VALUES (?, ?, ?, ?)
             ''', (order_id, product_id, quantity, price))
-
+            
             # Update stock
             cursor.execute('''
-                UPDATE products SET stock = stock - ? WHERE id = ?'
-                ''', (quantity, product_id))
-            
+                UPDATE products SET stock = stock - ? WHERE id = ?
+            ''', (quantity, product_id))
+        
         conn.commit()
         conn.close()
 
@@ -279,15 +280,15 @@ def get_order(order_id):
     
     # Get order items
     cursor.execute('''
-        SELECT oi.*, p.name
-        FROM order_items oi
-        JOIN products p ON oi.product_id = p.id
+        SELECT oi.*, p.name 
+        FROM order_items oi 
+        JOIN products p ON oi.product_id = p.id 
         WHERE oi.order_id = ?
-    ''', (order_id))
-
+    ''', (order_id,))
+    
     items = cursor.fetchall()
     conn.close()
-
+    
     return jsonify({
         'order_id': order[0],
         'user_id': order[1],
@@ -297,10 +298,10 @@ def get_order(order_id):
         'created_at': order[4],
         'items': [
             {
-                'product_id': item[1],
+                'product_id': item[2],
                 'product_name': item[5],
-                'quantity': item[2],
-                'price': item[3]
+                'quantity': item[3],
+                'price': item[4]
             } for item in items
         ]
     })

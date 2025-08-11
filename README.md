@@ -1,6 +1,6 @@
-###  E-commerce Testing Suite
+###  E-commerce Testing Suite (COMPLETO)
 
-Automated Testing Framework para aplicación e-commerce usando Python + Selenium + Pytest
+UI + API + Database Testing Framework para aplicación e-commerce usando Python + Selenium + Pytest + Flask + Sqlite3
 
 ## Caracteristicas: 
     [x] UI Testing con Page Object Model (POM)
@@ -19,30 +19,44 @@ Automated Testing Framework para aplicación e-commerce usando Python + Selenium
 
 
 
+
 ## Estructura del proyecto
 
     E-COMMERCE_TESTING_SUITE/
+    ├── api/
+    |   ├── base_api.py
+    |   ├── mock_server.py     # Mock API para simular endpoints
+    |   ├── endpoints/
+    |   |   ├── users_api.py        # 
+    |   |   ├── products_api.py     #
+    |   |   ├── orders_api.py       #
     ├── pages/                 # Page Object Model
     │   ├── base_page.py       # Clase base para páginas
     │   ├── login_page.py      # Página de login  
     │   ├── products_page.py   # Página de productos
-    │   └── cart_page.py       # Página del carrito
+    │   ├── cart_page.py       # Página del carrito
     │   └── checkout_page.py   # Página del pago (checkout)
     ├── tests/                 # Tests organizados
     │   ├── ui/                # UI Tests
-    │   │   ├── test_login.py
-    │   │   ├── test_products.py
-    │   │   └── test_cart_flow.py
-    │   │   └── test_checkout.py
-    │   ├── api/              # API Tests (próximamente)
-    │   └── integration/      # Integration Tests
+    │   │   ├── test_login.py      
+    │   │   ├── test_products.py    
+    │   │   ├── test_cart_flow.py   
+    │   │   └── test_checkout.py    
+    │   ├── api/              
+    │   │   ├── test_orders_api.py
+    │   │   ├── test_products_api.py
+    │   │   └── test_users_api.py       
+    │   └── integration/                # Integration Tests
+    │   │   └── test_db_validation.py
     ├── utils/                # Utilidades
     │   ├── config.py         # Configuración
     │   └── helpers.py        # Funciones auxiliares
+    │   └── db_utils          # Funciones auxiliares
     ├── data/                 # Datos de prueba
     ├── reports/              # Reportes generados
     ├── screenshots/          # Screenshots de fallos
-    └── conftest.py           # Configuración pytest
+    ├── conftest.py           # Configuración pytest
+    └── ecommerce_test.db     # DB generada automaticamente
 
 
 
@@ -72,9 +86,15 @@ Automated Testing Framework para aplicación e-commerce usando Python + Selenium
     IMPLICIT_WAIT=10
     EXPLICIT_WAIT=20
 
+    5. Setup del Mock API Server
+    python api/mock_server.py
+    - Se deberia ver:
+    * Running on http://127.0.0.1:5000
+    * Debug mode: on
 
 
 ## Ejecutar Tests
+Los tests deben ejecutarse en una terminal diferente a la del Mock API Server
 
 ### Todos los Tests
     pytest -v
@@ -88,6 +108,12 @@ Automated Testing Framework para aplicación e-commerce usando Python + Selenium
 
 #### Solo tests de UI
     pytest -m ui -v
+
+#### Solo tests de API
+    pytest -m api -v
+
+#### Solo tests de DB validation
+    pytest -m integration -v
 
 ### Tests específicos por archivo
 #### Solo tests de login
@@ -164,7 +190,25 @@ Logs: Output detallado en consola con -v flag
 
 ✅ Volver a la pagina de productos despues de un pago exitoso
 
+#### API Testing
 
+✅ CRUD Usuarios: Crear, obtener, validar duplicados
+
+✅ Gestión Productos: Listar, actualizar stock
+
+✅ Procesamiento Órdenes: Crear órdenes, validar stock
+
+✅ Validaciones Respuesta: Status codes, JSON schemas
+
+#### Database Validations
+
+✅ Usuario creado en DB: Verificar datos completos
+
+✅ Stock después de compra: Tracking en tiempo real
+
+✅ Orden guardada: Validar estructura completa
+
+✅ Rollback en fallos: Stock no cambia si orden falla
 
 
 #### Próximos Pasos
